@@ -3,20 +3,15 @@ import { Observable, timer, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
-  template: ``,
+  template: `
+    <p>{{ timer$ | async }}</p>
+  `,
   styles: []
 })
 export class AppComponent implements OnInit, OnDestroy {
   timer$: Observable<number> = timer(0, 1000);
-  subscription: Subscription;
 
-  ngOnInit(): void {
-    this.subscription = this.timer$.subscribe(secondsElapsed =>
-      console.log(secondsElapsed)
-    );
-  }
+  ngOnInit(): void {}
 
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
+  ngOnDestroy(): void {}
 }
